@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    component: frontend
+    version: v2
+  name: frontend-v2-route
+  namespace: myproject
+spec:
+  # try this url: http://frontend-v2-route-myproject.192.168.99.101.nip.io/
+  port:
+    targetPort: frontend-v2
+  to:
+    kind: Service
+    name: frontend-v2-service
+    weight: 100

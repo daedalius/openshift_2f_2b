@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    component: backend
+    version: v2
+  name: backend-v2-route
+  namespace: myproject
+spec:
+  # try this url: http://backend-v2-route-myproject.192.168.99.101.nip.io/
+  port:
+    targetPort: backend-v2
+  to:
+    kind: Service
+    name: backend-v2-service
+    weight: 100

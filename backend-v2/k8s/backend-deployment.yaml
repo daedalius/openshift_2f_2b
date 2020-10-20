@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-v2-deployment
+  namespace: myproject
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: backend
+      version: v2
+  template:
+    metadata:
+      labels:
+        component: backend
+        version: v2
+    spec:
+      containers:
+        - image: 172.30.1.1:5000/myproject/backend-v2:latest
+          name: backend-v2
+          ports:
+            - containerPort: 8080

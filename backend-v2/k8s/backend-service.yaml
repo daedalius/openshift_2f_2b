@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-v2-service
+  namespace: myproject
+spec:
+  type: ClusterIP
+  ports:
+    - name: backend-v2
+      port: 6002
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    component: backend
+    version: v2

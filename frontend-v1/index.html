@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend v1</title>
+</head>
+
+<body>
+  <p>frontend-version: v1</p>
+  <p>backend-version: <span id="backend-version-el"></span></p>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch('http://backend-v1-route-myproject.192.168.99.101.nip.io/',).then(response => {
+      return response.json()
+    }).then(responseContent => {
+      document.querySelector("#backend-version-el").textContent = responseContent.version;
+    });
+  });
+</script>
+
+</html>

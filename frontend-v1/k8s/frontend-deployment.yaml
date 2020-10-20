@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-v1-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: frontend
+      version: v1
+  template:
+    metadata:
+      labels:
+        component: frontend
+        version: v1
+    spec:
+      containers:
+        # - image: 172.30.1.1:5000/myproject/frontend-v1@sha256:digest_hash
+        - image: 172.30.1.1:5000/myproject/frontend-v1:latest
+          name: frontend-v1
+          ports:
+            - containerPort: 8080
